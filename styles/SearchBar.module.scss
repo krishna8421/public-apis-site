@@ -1,0 +1,18 @@
+.searchDiv{
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    align-items: center;
+
+    .search{
+        width: 30rem;
+        color: rgb(255, 255, 255);
+        background-color: black;
+        padding: 0.8rem;
+        border: none;
+        font-size: 20px;
+        border-radius: 5rem;
+        padding-left: 2rem;
+      }
+}
