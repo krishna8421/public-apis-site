@@ -21,7 +21,7 @@ for I in IndexWiseData:
             apiAuth             = splitOneLine[3].strip()
             apiHttps            = splitOneLine[4].strip()
             apiCors             = splitOneLine[5].strip()
-            apiCategory         = IndexWiseData[0].split('\n')[0].strip()
+            apiCategory         = oneLine[0]
             apiLink             = splitOneLine[1].split('(')[1].strip()[:-1]
 
             apiSingleList = {
