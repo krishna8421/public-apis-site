@@ -1,7 +1,11 @@
 import requests
 from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 
 url = "https://raw.githubusercontent.com/public-apis/public-apis/master/README.md"
 getData = requests.get(url).text
@@ -38,6 +42,7 @@ for I in IndexWiseData:
 
 
 @app.route('/', methods=['GET'])
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def PublicApi():
     return jsonify(ResultDataInJSON)
 
