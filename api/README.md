@@ -33,4 +33,4 @@ flask run
 
 ## TO-DO
 
-Write this Api Node.js
+Write this Api in Node.js
