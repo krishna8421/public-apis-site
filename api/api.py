@@ -36,6 +36,11 @@ for I in IndexWiseData:
 
             ResultDataInJSON['allApi'].append(apiSingleList)
 
-@app.route('/api')
+
+@app.route('/', methods=['GET'])
 def PublicApi():
     return jsonify(ResultDataInJSON)
+
+
+if __name__ == "__main__":
+    app.run(debug=False)

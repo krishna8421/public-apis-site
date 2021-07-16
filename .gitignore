@@ -36,3 +36,6 @@ yarn-error.log*
 # Flask
 env
 __pycache__
+
+#Mac
+.DS_Store
