@@ -29,6 +29,7 @@ for I in IndexWiseData:
             apiLink             = splitOneLine[1].split('(')[1].strip()[:-1]
 
             apiSingleList = {
+                "_tags":f"{apiName} {apiDescription} {apiAuth} {apiCategory} {apiLink}",
                 "API": f"{apiName}",
                 "Description": f"{apiDescription}",
                 "Auth": f"{apiAuth}",

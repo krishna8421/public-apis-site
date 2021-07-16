@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+
+.singleCard {
+  background-color: #ffffff;
+  width: 17rem;
+  height: 27rem;
+  border-radius: 2.5rem;
+  margin: auto;
+  margin-top: 4rem;
+  font-family: "Poppins", serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  overflow:hidden;
+  h1 {
+    width: 95%;
+    text-align: center;
+    height: 14%;
+    padding: 1rem;
+    font-family: 'Arvo', serif;
+    font-size: 1rem;
+  }
+  p {
+      text-align: center;
+      padding: 0.5rem;
+      width: 100%;
+    height: 20%;
+    color: #575757;
+    font-size: small;
+    margin: auto;
+  }
+  .aboutAPI {
+      width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 45%;
+    h4 {
+      padding: 0.4rem;
+      font-weight: 200;
+    }
+  }
+  hr {
+      margin: auto;
+    color: rgb(245, 245, 245);
+    width: 70%;
+  }
+}
