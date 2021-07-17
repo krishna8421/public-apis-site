@@ -14,7 +14,7 @@ function NavBar() {
                         Public
                     </h2>
                     <Image src={Logo} alt="Logo of APIs" width="75" height="75"/> */}
-                    <Image src={Logo} layout="fixed" alt="Logo of APIs" width="180" height="75"/>
+                    <Image priority={true} src={Logo} layout="fixed" alt="Logo of APIs" width="180" height="75"/>
                 </div>
             </a>
             <ul className={style.navButtons}>
