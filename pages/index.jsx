@@ -10,7 +10,8 @@ export async function getStaticProps() {
     
   return{
     props: {
-      apiDataAll: data.allApi
+      apiDataAll: data.allApi,
+      revalidate: 60 * 60
     }
   }
 }
