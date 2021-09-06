@@ -1,11 +1,18 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import theme from '../styles/theme'
+import theme from "../styles/theme";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { useState } from "react";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 function MyApp({ Component, pageProps }) {
+  const [queryClient] = useState(() => new QueryClient());
   return (
-    <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 

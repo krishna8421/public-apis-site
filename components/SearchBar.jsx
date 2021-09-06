@@ -1,16 +1,44 @@
-import { InputGroup, InputLeftElement, Input, Box } from "@chakra-ui/react";
-import { AiOutlineSearch } from "react-icons/ai";
+import {
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+  Input,
+  Box,
+} from "@chakra-ui/react";
+import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
+import { RiCloseFill } from "react-icons/ri";
+import { useState } from "react";
+import { motion } from "framer-motion";
+
+const MotionBox = motion(Box);
+
 function SearchBar() {
   return (
-    <Box mt="2rem" display="flex" justifyContent="center" >
-      <InputGroup size="lg" variant="filled" maxW="30rem" >
+    <MotionBox
+      w="25rem"
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: { scale: 0.8, opacity: 0 },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: 0.3,
+          },
+        },
+      }}
+    >
+      <InputGroup size="lg" variant="filled">
         <InputLeftElement pointerEvents="none">
           <AiOutlineSearch />
         </InputLeftElement>
-        <Input _focus='' placeholder="Search APIs" />
+        <InputRightElement>
+          <RiCloseFill />
+        </InputRightElement>
+        <Input _focus="" placeholder="Search APIs" />
       </InputGroup>
-    </Box>
+    </MotionBox>
   );
 }
-
 export default SearchBar;
