@@ -1,33 +1,61 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
-import { useQuery } from 'react-query';
+import CategoryBox from "../components/CategoryBox";
+import AllApisLink from "../components/AllApisLink";
+import { useQuery } from "react-query";
 import axios from "axios";
 
-const fetchData = async () => {
-  const { data } = await axios.get('https://api.publicapis.org/entries')
-  return data
+// Fetch All data at once
+const fetchAllData = async () => {
+  const { data: AllApiData } = await axios.get(
+    "https://api.publicapis.org/entries"
+  );
+  return AllApiData;
+};
+
+//Static fetch Category List every 24hr
+export async function getStaticProps() {
+  const categoryList = await axios.get("https://api.publicapis.org/categories");
+  return {
+    props: {
+      categoryList: categoryList.data,
+      revalidate: 60 * 60 * 24,
+    },
+  };
 }
-export default function Home() {
-  const { data, status } = useQuery('apiData',fetchData)
-  console.log(data  );
+
+const Home = (categoryList) => {
+  const categoryListName = categoryList.categoryList;
+  const { data: AllApiData, status: AllApiDataStatus } = useQuery(
+    "apiData",
+    fetchAllData
+  );
+
   return (
     <Flex justify="center">
-      <Box minH="100vh" w="80%">
+      <Box minH="100vh" w={["95%", "95%", "90%", "85%"]}>
         <NavBar />
-        <Box mt="2rem" display="flex" justifyContent="center">
+        <Box mt={5} display="flex" justifyContent="center">
           <SearchBar />
         </Box>
-        {status == 'loading' && (
-          <h4>Loading.....</h4>
-        )}
-                {status == 'success' && (
-          <h4>Tadaaaa</h4>
-        )}
-        {status == 'error' && (
-          <h4>error</h4>
-        )}
+        <Flex justify="center" mt={5}>
+          <AllApisLink status={AllApiDataStatus} />
+        </Flex>
+        <Box w="100%" mt={7}>
+          <Flex justify="center" flexWrap='wrap'>
+            {categoryListName.map((category) => (
+              <CategoryBox key={category} categoriesName={category} display='inline-flex'/>
+            ))}
+          </Flex>
+        </Box>
+
+        {AllApiDataStatus == "loading" && <h4>Loading.....</h4>}
+        {AllApiDataStatus == "success" && <h4>Tadaaaa</h4>}
+        {AllApiDataStatus == "error" && <h4>error</h4>}
       </Box>
     </Flex>
   );
-}
+};
+
+export default Home;
