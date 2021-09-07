@@ -1,45 +1,80 @@
-import {Flex, Button,useColorModeValue} from '@chakra-ui/react'
+import { Flex, Button, Icon } from "@chakra-ui/react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import {useState} from 'react'
+function Pagination({
+  apisPerPage,
+  totalApis,
+  paginate,
 
-export default function Pagination(){
-    const PagButton = (props) => {
-      const activeStyle = {
-        bg: useColorModeValue("brand.600", "brand.500"),
-        color: useColorModeValue("white", "gray.200"),
-      };
-      return (
-        <Button
-          mx={1}
-          px={4}
-          py={2}
-          rounded="md"
-          bg={useColorModeValue("white", "gray.800")}
-          color={useColorModeValue("gray.700", "gray.200")}
-          opacity={props.disabled && 0.6}
-          _hover={!props.disabled && activeStyle}
-          cursor={props.disabled && "not-allowed"}
-          {...(props.active && activeStyle)}
-        >
-          {props.children}
-        </Button>
-      );
+  currentPage,
+  maxPageNumberLimit,
+  minPageNumberLimit,
+}) {
+  const pageNumbers = [];
+  for (let i = 1; i < Math.ceil(totalApis / apisPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  const PageButton = (props) => {
+    const activeStyle = {
+      bg: "teal.400",
+      color: "gray.100",
     };
     return (
-      <Flex
-        bg={useColorModeValue("#F9FAFB", "gray.600")}
-        py={5}
-        w="full"
-        alignItems="center"
-        justifyContent="center"
+      <Button
+        mx={1}
+        px={4}
+        py={2}
+        rounded="md"
+        bg="gray.900"
+        borderColor='gray.600'
+        borderWidth='1px'
+        color="gray.200"
+        opacity={props.disabled && 0.6}
+        _hover={!props.disabled && activeStyle}
+        cursor={props.disabled && "not-allowed"}
+        {...(props.active === true && activeStyle)}
       >
-        <Flex>
-          <PagButton disabled>previous</PagButton>
-          <PagButton active>1</PagButton>
-          <PagButton>2</PagButton>
-          <PagButton>3</PagButton>
-          <PagButton>4</PagButton>
-          <PagButton>5</PagButton>
-          <PagButton>Next</PagButton>
-        </Flex>
-      </Flex>
+        {props.children}
+      </Button>
     );
   };
+  return (
+    <Flex
+      p={50}
+      w="full"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Flex>
+        <a>
+          <PageButton>
+            <Icon as={IoIosArrowBack} color="gray.200" boxSize={4} />
+          </PageButton>
+        </a>
+
+        {pageNumbers.map((number) => {
+          if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
+            return (
+              <a key={number} onClick={() => paginate(number)}>
+                <PageButton active={currentPage === number ? true : null}>
+                  {number}
+                </PageButton>
+              </a>
+            );
+          } else {
+            return null;
+          }
+        })}
+        
+        <a>
+          <PageButton>
+            <Icon as={IoIosArrowForward} color="gray.200" boxSize={4} />
+          </PageButton>
+        </a>
+      </Flex>
+    </Flex>
+  );
+}
+
+export default Pagination;

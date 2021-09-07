@@ -1,5 +1,5 @@
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { Flex, Button } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 const MotionButton = motion(Button);
