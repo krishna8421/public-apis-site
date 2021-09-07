@@ -1,40 +1,92 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
-import Image from 'next/image'
-import Link from 'next/link'
-//import Logo from "../public/icon.png"
-import Logo from "../public/icon-full.svg"
-import style from "../styles/NavBar.module.scss"
+import {
+  Flex,
+  Box,
+  HStack,
+  Icon,
+  Button,
+  Img,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from "@chakra-ui/react";
+import { FiTwitter, FiGithub } from "react-icons/fi";
+import { RiLinkedinLine } from "react-icons/ri";
+import { DiGithubBadge } from "react-icons/di";
+import Link from "next/link";
 
-function NavBar() {
-    return (
-        <nav className={style.navBar}>
-            <a href="/">
-                <div className={style.logo}>
-                    {/* <h2>
-                        Public
-                    </h2>
-                    <Image src={Logo} alt="Logo of APIs" width="75" height="75"/> */}
-                    <Image priority={true} src={Logo} layout="fixed" alt="Logo of APIs" width="180" height="75"/>
-                </div>
-            </a>
-            <ul className={style.navButtons}>
-                <li>
-                        <a>Category</a>
-                </li>
-                <li>
-                    <Link href="https://github.com/krishna8421/public-apis-site">
-                        <a>Github</a>
-                    </Link>
-                </li>
+export default function NavBar() {
+  const publicApisRepo = "https://github.com/public-apis/public-apis";
+  const publicApisApiRepo = "https://github.com/davemachado/public-api";
+  const publicApisSiteRepo = "https://github.com/krishna8421/public-apis-site";
+  const twitterUrl = "https://twitter.com/krishnaa8421";
+  const linkedinUrl = "https://linkedin.com/in/krishnaa8421";
+  return (
+    <Box mt={2}>
+      <Box borderBottomWidth="3px" borderColor="purple.600">
+        <Flex
+          justify={["center", "center", "space-between", "space-between"]}
+          align="center"
+          p="3"
+        >
+          <Box>
+            <Link href="/">
+              <a>
+                <Img
+                  ml={4}
+                  h="2rem"
+                  src="/PublicAPIs.png"
+                  alt="Public Apis"
+                  objectFit="cover"
+                />
+              </a>
+            </Link>
+          </Box>
+          <Box display={["none", "none", "block", "block"]}>
+            <HStack spacing={4} mr={4}>
+              <a href={linkedinUrl}>
+                <Button variant="ghost">
+                  <Icon as={RiLinkedinLine} />
+                </Button>
+              </a>
+              <a href={twitterUrl}>
+                <Button variant="ghost">
+                  <Icon as={FiTwitter} />
+                </Button>
+              </a>
+              <Menu>
+                <MenuButton as={Button} variant="ghost">
+                  <Icon as={FiGithub} />
+                </MenuButton>
 
-                <li>
-                    <Link href="/about">
-                        <a>About</a>
+                <MenuList zIndex="popover">
+                  <MenuItem>
+                    <Icon as={DiGithubBadge} />
+                    &nbsp;&nbsp;&nbsp;{" "}
+                    <Link href={publicApisRepo}>
+                      <a>Public APIs Project</a>
                     </Link>
-                </li>
-            </ul>  
-        </nav>  
-    )
+                  </MenuItem>
+                  <MenuItem>
+                    <Icon as={DiGithubBadge} />
+                    &nbsp;&nbsp;&nbsp;{" "}
+                    <Link href={publicApisSiteRepo}>
+                      <a>Public APIs Site</a>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Icon as={DiGithubBadge} />
+                    &nbsp;&nbsp;&nbsp;{" "}
+                    <Link href={publicApisApiRepo}>
+                      <a>Public APIs API</a>
+                    </Link>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            </HStack>
+          </Box>
+        </Flex>
+      </Box>
+    </Box>
+  );
 }
-
-export default NavBar
