@@ -5,7 +5,6 @@ function Pagination({
   apisPerPage,
   totalApis,
   paginate,
-
   currentPage,
   maxPageNumberLimit,
   minPageNumberLimit,

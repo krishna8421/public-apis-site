@@ -5,14 +5,27 @@ import {
   Input,
   Box,
 } from "@chakra-ui/react";
-import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineSearch} from "react-icons/ai";
 import { RiCloseFill } from "react-icons/ri";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
 
-function SearchBar() {
+function SearchBar({searchTermFunc}) {
+  //Input Search Bar
+  const [searchTerm, setSearchTerm] = useState("")
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+    searchTermFunc(searchTerm);
+  }
+  // Close button
+  const CloseBtnHandler = () =>{
+    setSearchTerm('')
+  }
+  //Search 
+
+
   return (
     <MotionBox
       w="25rem"
@@ -30,15 +43,16 @@ function SearchBar() {
       }}
     >
       <InputGroup size="lg" variant="filled">
-        <InputLeftElement pointerEvents="none">
+        <InputLeftElement as='Button'>
           <AiOutlineSearch />
         </InputLeftElement>
-        <InputRightElement>
-          <RiCloseFill />
+        <InputRightElement as='Button'>
+          <RiCloseFill onClick={CloseBtnHandler}/>
         </InputRightElement>
-        <Input _focus="" placeholder="Search APIs" />
+        <Input _focus="" placeholder="Search APIs" value={searchTerm} onChange={handleChange}  />
       </InputGroup>
     </MotionBox>
   );
 }
+
 export default SearchBar;
