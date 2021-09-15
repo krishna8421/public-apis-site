@@ -5,29 +5,26 @@ import {
   Input,
   Box,
 } from "@chakra-ui/react";
-import { AiOutlineSearch} from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
 import { RiCloseFill } from "react-icons/ri";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
 
-function SearchBar({searchTermFunc}) {
-  //States
-  const [searchTerm, setSearchTerm] = useState("")
+function SearchBar({ searchTermFunc}) {
 
-  
-  // Handle changes in SearchBar 
+  // Handle changes in SearchBar
   const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-    searchTermFunc(searchTerm);
-  }
-  // Close button
-  const CloseBtnHandler = () =>{
-    setSearchTerm('')
-  }
-  //Search 
 
+  };
+
+  // Close button
+  const CloseBtnHandler = () => {
+
+  };
+  
+  //Search
 
   return (
     <MotionBox
@@ -46,13 +43,16 @@ function SearchBar({searchTermFunc}) {
       }}
     >
       <InputGroup size="lg" variant="filled">
-        <InputLeftElement as='Button'>
+        <InputLeftElement as="Button">
           <AiOutlineSearch />
         </InputLeftElement>
-        <InputRightElement as='Button'>
-          <RiCloseFill onClick={CloseBtnHandler}/>
+        <InputRightElement as="Button">
+          <RiCloseFill onClick={CloseBtnHandler} />
         </InputRightElement>
-        <Input _focus="" placeholder="Search APIs" value={searchTerm} onChange={handleChange}  />
+        <Input
+          _focus=""
+          placeholder="Search APIs"
+        />
       </InputGroup>
     </MotionBox>
   );

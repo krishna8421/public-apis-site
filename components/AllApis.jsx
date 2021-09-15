@@ -1,13 +1,9 @@
 import ApiShowBox from "./ApiShowBox";
 
-function AllApis({ AllApiData,searchTerm }) {
+function AllApis({ AllApiData, searchTerm }) {
   return (
     <>
-      {AllApiData.filter((val) => {
-        if (val.API.toLowerCase().includes(searchTerm.toLowerCase())) {
-          return val;
-        }
-      }).map((apiData) => {
+      {AllApiData.map((apiData) => {
         const { API, Auth, Cors, Category, Description, HTTPS, Link } = apiData;
         return (
           <ApiShowBox
@@ -22,21 +18,6 @@ function AllApis({ AllApiData,searchTerm }) {
           />
         );
       })}
-
-      {/* {AllApiDataStatus === "success" ? (
-  <Pagination
-    apisPerPage={apisPerPage}
-    totalApis={AllApiData.length}
-    paginate={paginate}
-    currentPage={currentPage}
-    maxPageNumberLimit={maxPageNumberLimit}
-    minPageNumberLimit={minPageNumberLimit}
-  />
-) : (
-  ""
-)} */}
-
-
     </>
   );
 }

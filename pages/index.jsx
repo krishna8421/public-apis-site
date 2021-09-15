@@ -28,37 +28,35 @@ export async function getStaticProps() {
 //
 const Home = ({ AllApiData, categoryList }) => {
   // States
-  const [searchTerm, setSearchTerm] = useState("");
   const [showAllApis, setShowAllApis] = useState(true);
-  //Search
-  const searchTermFunc = (searchTermVal) => setSearchTerm(searchTermVal);
-  const allApiBtnClickFunc = (showAllApisVal) => {
-    setShowAllApis(showAllApisVal);
-  };
+
+  // Show all Api
+  const allApiBtnClickFunc = (showAllApisVal) => setShowAllApis(showAllApisVal);
+
   //Main UI
   return (
     <Flex justify="center" direction="column" minH="100vh">
       <Box w={["95%", "95%", "90%", "85%"]} m="auto" mt={0}>
         <NavBar />
-        <Box mt={5} display="flex" justifyContent="center">
-          <SearchBar searchTermFunc={searchTermFunc} />
-        </Box>
+        {/* <Box mt={5} display="flex" justifyContent="center">
+          <SearchBar/>
+        </Box> */}
         <Flex justify="center" mt={5}>
           <AllApisBtn allApiBtnClickFunc={allApiBtnClickFunc} />
         </Flex>
         <Box w="100%" mt={7}>
           <Flex justify="center" flexWrap="wrap">
             {showAllApis === false ? (
-              // Do pagination so it can load fast
-              // <AllApis AllApiData={AllApiData.entries} searchTerm={searchTerm} />
-              <>Working...</>
+              <AllApis
+                AllApiData={AllApiData.entries}
+              />
             ) : (
               <AllCategory categoryList={categoryList} />
             )}
           </Flex>
         </Box>
       </Box>
-      <Box mt='2rem'>
+      <Box mt="2rem">
         <Footer />
       </Box>
     </Flex>
