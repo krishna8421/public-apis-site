@@ -4,7 +4,7 @@ function Footer() {
   return (
     <Box  mt='auto' mx='auto' w={["95%", "95%", "90%", "85%"]} borderTopWidth="3px" borderColor="purple.600">
       <Flex my={10} justify="center" align="center">
-        <Text fontSize="lg"  >Made with ❤️ by Krishna</Text>
+        <Text fontSize="md"  >Made with ❤️ by Krishna</Text>
       </Flex>
     </Box>
   );
