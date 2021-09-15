@@ -1,14 +1,16 @@
 import { Flex, Button, Icon } from "@chakra-ui/react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import {useState} from 'react'
-function Pagination({
+import { useState } from "react";
+
+const Pagination = ({
   apisPerPage,
   totalApis,
   paginate,
   currentPage,
   maxPageNumberLimit,
   minPageNumberLimit,
-}) {
+}) => {
+  
   const pageNumbers = [];
   for (let i = 1; i < Math.ceil(totalApis / apisPerPage); i++) {
     pageNumbers.push(i);
@@ -26,8 +28,8 @@ function Pagination({
         py={2}
         rounded="md"
         bg="gray.900"
-        borderColor='gray.600'
-        borderWidth='1px'
+        borderColor="gray.600"
+        borderWidth="1px"
         color="gray.200"
         opacity={props.disabled && 0.6}
         _hover={!props.disabled && activeStyle}
@@ -39,12 +41,7 @@ function Pagination({
     );
   };
   return (
-    <Flex
-      p={50}
-      w="full"
-      alignItems="center"
-      justifyContent="center"
-    >
+    <Flex p={50} w="full" alignItems="center" justifyContent="center">
       <Flex>
         <a>
           <PageButton>
@@ -65,7 +62,7 @@ function Pagination({
             return null;
           }
         })}
-        
+
         <a>
           <PageButton>
             <Icon as={IoIosArrowForward} color="gray.200" boxSize={4} />
@@ -74,6 +71,6 @@ function Pagination({
       </Flex>
     </Flex>
   );
-}
+};
 
 export default Pagination;

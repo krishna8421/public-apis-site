@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const MotionBox = motion(Box);
-// .toLowerCase().trim().split(/\s/).join('') 
+
 function CategoryBox({ categoriesName }) {
   return (
     <Link href={"/categories/" + categoriesName.toLowerCase().trim() } passHref>

@@ -17,26 +17,16 @@ function AllApisBtn({ allApiBtnClickFunc }) {
     allApiBtnClickFunc(showAllApis);
   };
   return (
-    // <MotionButton
-    //   rightIcon={showAllApis === true ? <ArrowForwardIcon /> : null}
-    //   leftIcon={showAllApis === false ? <ArrowBackIcon /> : null}
-    //   colorScheme="teal"
-    //   variant="outline"
-    //   whileHover={{ scale: 1.05 }}
-    //   whileTap={{ scale: 0.95 }}
-    //   onClick={handleChange}
-    // >
-    
-    //   {showAllApis === true ? <>Browse all APIs</> : <>Back</>}
-    // </MotionButton>
     <MotionButton
-    colorScheme="teal"
-    variant="outline"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    onClick={handleChange}
+      rightIcon={showAllApis === false ? <ArrowForwardIcon /> : null}
+      leftIcon={showAllApis === true ? <ArrowBackIcon /> : null}
+      colorScheme="teal"
+      variant="outline"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={handleChange}
     >
-      {showAllApis===false?<>Browse all APIs</>:<>Back</>}
+      {showAllApis === false ? <>Browse all APIs</> : <>Back</>}
     </MotionButton>
   );
 }

@@ -4,7 +4,6 @@ import SearchBar from "../components/SearchBar";
 import AllCategory from "../components/AllCategory";
 import AllApis from "../components/AllApis";
 import AllApisBtn from "../components/AllApisBtn";
-import Pagination from "../components/Pagination";
 import { useState } from "react";
 import Footer from "../components/Footer";
 
@@ -38,18 +37,21 @@ const Home = ({ AllApiData, categoryList }) => {
     <Flex justify="center" direction="column" minH="100vh">
       <Box w={["95%", "95%", "90%", "85%"]} m="auto" mt={0}>
         <NavBar />
-        {/* <Box mt={5} display="flex" justifyContent="center">
+        <Box mt={5} display="flex" justifyContent="center">
           <SearchBar/>
-        </Box> */}
+        </Box>
         <Flex justify="center" mt={5}>
           <AllApisBtn allApiBtnClickFunc={allApiBtnClickFunc} />
         </Flex>
         <Box w="100%" mt={7}>
           <Flex justify="center" flexWrap="wrap">
             {showAllApis === false ? (
+              <>
               <AllApis
                 AllApiData={AllApiData.entries}
               />
+              
+              </>
             ) : (
               <AllCategory categoryList={categoryList} />
             )}
