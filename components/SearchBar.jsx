@@ -13,8 +13,11 @@ import { motion } from "framer-motion";
 const MotionBox = motion(Box);
 
 function SearchBar({searchTermFunc}) {
-  //Input Search Bar
+  //States
   const [searchTerm, setSearchTerm] = useState("")
+
+  
+  // Handle changes in SearchBar 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
     searchTermFunc(searchTerm);

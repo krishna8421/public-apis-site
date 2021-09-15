@@ -1,10 +1,12 @@
 import { Flex, Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const MotionBox = motion(Box);
-
-function CategoryBox(props) {
+// .toLowerCase().trim().split(/\s/).join('') 
+function CategoryBox({ categoriesName }) {
   return (
+    <Link href={"/categories/" + categoriesName.toLowerCase().trim() } passHref>
     <MotionBox
       m={2}
       bgColor="gray.900"
@@ -17,9 +19,10 @@ function CategoryBox(props) {
       whileTap={{ scale: 0.9 }}
     >
       <Flex justify="center" align="center" h="4.5rem" w="14rem">
-        {props.categoriesName}
+          <a>{categoriesName}</a>
       </Flex>
     </MotionBox>
+        </Link>
   );
 }
 
