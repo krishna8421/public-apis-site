@@ -7,8 +7,8 @@ function AllApis({ AllApiData }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [apisPerPage] = useState(12);
 
-  const [pageNumberLimit, setpageNumberLimit] = useState(5);
-  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
+  const pageNumberLimit = 5;
+  const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(pageNumberLimit);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
 
   //Pagination
@@ -19,7 +19,30 @@ function AllApis({ AllApiData }) {
 
   // Change Page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   // Next/Previous
+  const nextPage = (pageNumber) => {
+    if(pageNumber === (Math.trunc((indexOfLastApi)/apisPerPage))){
+      setCurrentPage((Math.trunc((indexOfLastApi)/apisPerPage)));
+    }else{
+      setCurrentPage(pageNumber + 1);
+      if (pageNumber + 1 > maxPageNumberLimit) {
+        setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+        setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+      }
+    }
+  };
+  const previousPage = (pageNumber) => {
+    if (pageNumber === 1) {
+      setCurrentPage(1);
+    } else {
+      setCurrentPage(pageNumber - 1);
+      if ((pageNumber - 1) % pageNumberLimit === 0) {
+        setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+        setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+      }
+    }
+  };
 
   return (
     <>
@@ -45,6 +68,8 @@ function AllApis({ AllApiData }) {
         currentPage={currentPage}
         maxPageNumberLimit={maxPageNumberLimit}
         minPageNumberLimit={minPageNumberLimit}
+        previousPage={previousPage}
+        nextPage={nextPage}
       />
     </>
   );

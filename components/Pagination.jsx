@@ -9,12 +9,15 @@ const Pagination = ({
   currentPage,
   maxPageNumberLimit,
   minPageNumberLimit,
+  previousPage,
+  nextPage
 }) => {
   
   const pageNumbers = [];
   for (let i = 1; i < Math.ceil(totalApis / apisPerPage); i++) {
     pageNumbers.push(i);
   }
+
 
   const PageButton = (props) => {
     const activeStyle = {
@@ -43,8 +46,8 @@ const Pagination = ({
   return (
     <Flex p={50} w="full" alignItems="center" justifyContent="center">
       <Flex>
-        <a>
-          <PageButton>
+        <a onClick={() => previousPage(currentPage)}>
+          <PageButton isDisabled={true}>
             <Icon as={IoIosArrowBack} color="gray.200" boxSize={4} />
           </PageButton>
         </a>
@@ -63,7 +66,7 @@ const Pagination = ({
           }
         })}
 
-        <a>
+        <a onClick={() => nextPage(currentPage)}>
           <PageButton>
             <Icon as={IoIosArrowForward} color="gray.200" boxSize={4} />
           </PageButton>
