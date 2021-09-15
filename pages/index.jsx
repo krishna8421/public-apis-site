@@ -6,6 +6,7 @@ import AllApis from "../components/AllApis";
 import AllApisBtn from "../components/AllApisBtn";
 import { useState } from "react";
 import Footer from "../components/Footer";
+import ApiShowBox from "../components/ApiShowBox";
 
 //Static fetch Category List every 24hr
 export async function getStaticProps() {
@@ -28,9 +29,16 @@ export async function getStaticProps() {
 const Home = ({ AllApiData, categoryList }) => {
   // States
   const [showAllApis, setShowAllApis] = useState(true);
+  const [searchedList, setSearchedList] = useState([]);
 
   // Show all Api
   const allApiBtnClickFunc = (showAllApisVal) => setShowAllApis(showAllApisVal);
+
+  // Search Data Array
+  const searchData = (searchArray) => {
+    setSearchedList(searchArray.slice(0, 30));
+  };
+
 
   //Main UI
   return (
@@ -38,25 +46,55 @@ const Home = ({ AllApiData, categoryList }) => {
       <Box w={["95%", "95%", "90%", "85%"]} m="auto" mt={0}>
         <NavBar />
         <Box mt={5} display="flex" justifyContent="center">
-          <SearchBar/>
+          <SearchBar AllApiData={AllApiData.entries} searchData={searchData} />
         </Box>
-        <Flex justify="center" mt={5}>
-          <AllApisBtn allApiBtnClickFunc={allApiBtnClickFunc} />
-        </Flex>
-        <Box w="100%" mt={7}>
-          <Flex justify="center" flexWrap="wrap">
-            {showAllApis === false ? (
-              <>
-              <AllApis
-                AllApiData={AllApiData.entries}
-              />
-              
-              </>
-            ) : (
-              <AllCategory categoryList={categoryList} />
-            )}
-          </Flex>
-        </Box>
+        {searchedList.length > 0 && (
+          <>
+            <Box w="100%" mt={7}>
+              <Flex justify="center" flexWrap="wrap">
+                {searchedList.map((apiData) => {
+                  const {
+                    API,
+                    Auth,
+                    Cors,
+                    Category,
+                    Description,
+                    HTTPS,
+                    Link,
+                  } = apiData;
+                  return (
+                    <ApiShowBox
+                      key={Link}
+                      API={API}
+                      Auth={Auth}
+                      CORS={Cors}
+                      Category={Category}
+                      Description={Description}
+                      HTTPS={HTTPS}
+                      Link={Link}
+                    />
+                  );
+                })}
+              </Flex>
+            </Box>
+          </>
+        )}
+        {searchedList.length === 0 && (
+          <>
+            <Flex justify="center" mt={5}>
+              <AllApisBtn allApiBtnClickFunc={allApiBtnClickFunc} />
+            </Flex>
+            <Box w="100%" mt={7}>
+              <Flex justify="center" flexWrap="wrap">
+                {showAllApis === false ? (
+                  <AllApis AllApiData={AllApiData.entries} />
+                ) : (
+                  <AllCategory categoryList={categoryList} />
+                )}
+              </Flex>
+            </Box>
+          </>
+        )}
       </Box>
       <Box mt="2rem">
         <Footer />
