@@ -30,7 +30,7 @@ function Category() {
 
   return (
     <Flex justify="center" direction="column" minH="100vh">
-      <Box minH="100vh" w={["95%", "95%", "90%", "85%"]} m='auto'>
+      <Box minH="100vh" w={["95%", "95%", "90%", "85%"]} m="auto" mt={0}>
         <NavBar />
         <Box w="100%" mt={7}>
           <Flex justify="center" mt={5} mb={5}>
@@ -76,7 +76,9 @@ function Category() {
           </Flex>
         </Box>
       </Box>
-      <Footer />
+      <Box mt="2rem">
+        <Footer />
+      </Box>
     </Flex>
   );
 }

@@ -38,7 +38,7 @@ const Home = ({ AllApiData, categoryList }) => {
   //Main UI
   return (
     <Flex justify="center" direction="column" minH="100vh">
-      <Box w={["95%", "95%", "90%", "85%"]} m='auto' mt={0} mb={10}>
+      <Box w={["95%", "95%", "90%", "85%"]} m="auto" mt={0}>
         <NavBar />
         <Box mt={5} display="flex" justifyContent="center">
           <SearchBar searchTermFunc={searchTermFunc} />
@@ -58,7 +58,9 @@ const Home = ({ AllApiData, categoryList }) => {
           </Flex>
         </Box>
       </Box>
-      <Footer />
+      <Box mt='2rem'>
+        <Footer />
+      </Box>
     </Flex>
   );
 };
