@@ -7,6 +7,7 @@ import { Spinner, Button } from "@chakra-ui/react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowBackIcon } from "@chakra-ui/icons";
+import Footer from "../../components/Footer";
 
 const MotionButton = motion(Button);
 
@@ -28,23 +29,22 @@ function Category() {
   }, [category]);
 
   return (
-    <Flex justify="center">
-      <Box minH="100vh" w={["95%", "95%", "90%", "85%"]}>
+    <Flex justify="center" direction="column" minH="100vh">
+      <Box minH="100vh" w={["95%", "95%", "90%", "85%"]} m='auto'>
         <NavBar />
         <Box w="100%" mt={7}>
           <Flex justify="center" mt={5} mb={5}>
-              <Link href="/" passHref>
-            <MotionButton
-              leftIcon={<ArrowBackIcon />}
-              colorScheme="teal"
-              variant="outline"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Back
-            </MotionButton>
-              
-              </Link>
+            <Link href="/" passHref>
+              <MotionButton
+                leftIcon={<ArrowBackIcon />}
+                colorScheme="teal"
+                variant="outline"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Back
+              </MotionButton>
+            </Link>
           </Flex>
           <Flex justify="center" flexWrap="wrap">
             {categoryItems === null ? (
@@ -76,6 +76,7 @@ function Category() {
           </Flex>
         </Box>
       </Box>
+      <Footer />
     </Flex>
   );
 }

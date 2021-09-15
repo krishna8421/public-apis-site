@@ -26,6 +26,7 @@ function AllApisBtn({ allApiBtnClickFunc }) {
     //   whileTap={{ scale: 0.95 }}
     //   onClick={handleChange}
     // >
+    
     //   {showAllApis === true ? <>Browse all APIs</> : <>Back</>}
     // </MotionButton>
     <MotionButton
