@@ -22,15 +22,12 @@ function AllApis({ AllApiData }) {
 
   // Next/Previous
   const nextPage = (pageNumber) => {
-    if(pageNumber === (Math.trunc((indexOfLastApi)/apisPerPage))){
-      setCurrentPage((Math.trunc((indexOfLastApi)/apisPerPage)));
-    }else{
-      setCurrentPage(pageNumber + 1);
-      if (pageNumber + 1 > maxPageNumberLimit) {
-        setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
-        setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
-      }
+    setCurrentPage(pageNumber + 1);
+    if (pageNumber + 1 > maxPageNumberLimit) {
+      setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+      setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
     }
+
   };
   const previousPage = (pageNumber) => {
     if (pageNumber === 1) {
