@@ -12,28 +12,30 @@ import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
 
-function SearchBar({AllApiData,searchData}) {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [searchedList , setSearchedList] = useState([])
+function SearchBar({ AllApiData, searchData }) {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchedList, setSearchedList] = useState([]);
 
-  
   // Handle changes in SearchBar
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
-    searchData(searchedList)
+    searchData(searchedList, event.target.value);
   };
 
   // Close button
-  const CloseBtnHandler = () =>{
+  const CloseBtnHandler = () => {};
 
+  function filterItems(apiArray, query) {
+    return apiArray.filter(
+      (val) => val.API.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    );
   }
 
-  useEffect(()=>{
-    if(AllApiData){
-      setSearchedList(AllApiData.filter((val) => val.API.toLowerCase().includes(searchTerm)))
+  useEffect(() => {
+    if (AllApiData) {
+      setSearchedList(filterItems(AllApiData, searchTerm));
     }
-  },[AllApiData,searchTerm])
-
+  }, [AllApiData, searchTerm]);
 
   return (
     <MotionBox
@@ -55,7 +57,7 @@ function SearchBar({AllApiData,searchData}) {
         <InputLeftElement as="Button">
           <AiOutlineSearch />
         </InputLeftElement>
-        <InputRightElement as="Button" onClick={CloseBtnHandler} >
+        <InputRightElement as="Button" onClick={CloseBtnHandler}>
           <RiCloseFill />
         </InputRightElement>
         <Input _focus="" placeholder="Search APIs" onChange={handleChange} />
@@ -64,4 +66,4 @@ function SearchBar({AllApiData,searchData}) {
   );
 }
 
-export default SearchBar
+export default SearchBar;

@@ -28,17 +28,33 @@ export async function getStaticProps() {
 //
 const Home = ({ AllApiData, categoryList }) => {
   // States
+  const [searchTerm, setSearchTerm] = useState("");
   const [showAllApis, setShowAllApis] = useState(true);
   const [searchedList, setSearchedList] = useState([]);
+  const [searchedListOrigLength, setSearchedListOrigLength] = useState(0);
 
   // Show all Api
   const allApiBtnClickFunc = (showAllApisVal) => setShowAllApis(showAllApisVal);
 
   // Search Data Array
-  const searchData = (searchArray) => {
+  const searchData = (searchArray, searchTerm) => {
+    setSearchedListOrigLength(searchArray.length);
     setSearchedList(searchArray.slice(0, 30));
+    setSearchTerm(searchTerm);
   };
 
+  // Search or Show a Category
+  const searchOrCategory = () => {
+    if (
+      searchedListOrigLength === AllApiData.entries.length ||
+      searchedListOrigLength === 0 ||
+      searchTerm === ""
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   //Main UI
   return (
@@ -48,7 +64,22 @@ const Home = ({ AllApiData, categoryList }) => {
         <Box mt={5} display="flex" justifyContent="center">
           <SearchBar AllApiData={AllApiData.entries} searchData={searchData} />
         </Box>
-        {searchedList.length > 0 && (
+        {searchOrCategory() ? (
+          <>
+            <Flex justify="center" mt={5}>
+              <AllApisBtn allApiBtnClickFunc={allApiBtnClickFunc} />
+            </Flex>
+            <Box w="100%" mt={7}>
+              <Flex justify="center" flexWrap="wrap">
+                {showAllApis === false ? (
+                  <AllApis AllApiData={AllApiData.entries} />
+                ) : (
+                  <AllCategory categoryList={categoryList} />
+                )}
+              </Flex>
+            </Box>
+          </>
+        ) : (
           <>
             <Box w="100%" mt={7}>
               <Flex justify="center" flexWrap="wrap">
@@ -75,22 +106,6 @@ const Home = ({ AllApiData, categoryList }) => {
                     />
                   );
                 })}
-              </Flex>
-            </Box>
-          </>
-        )}
-        {searchedList.length === 0 && (
-          <>
-            <Flex justify="center" mt={5}>
-              <AllApisBtn allApiBtnClickFunc={allApiBtnClickFunc} />
-            </Flex>
-            <Box w="100%" mt={7}>
-              <Flex justify="center" flexWrap="wrap">
-                {showAllApis === false ? (
-                  <AllApis AllApiData={AllApiData.entries} />
-                ) : (
-                  <AllCategory categoryList={categoryList} />
-                )}
               </Flex>
             </Box>
           </>

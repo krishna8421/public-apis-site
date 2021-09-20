@@ -2,6 +2,7 @@ import { Flex, Button, Icon } from "@chakra-ui/react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useState } from "react";
 
+// Pagination Component
 const Pagination = ({
   apisPerPage,
   totalApis,
@@ -10,14 +11,12 @@ const Pagination = ({
   maxPageNumberLimit,
   minPageNumberLimit,
   previousPage,
-  nextPage
+  nextPage,
 }) => {
-  
   const pageNumbers = [];
   for (let i = 1; i < Math.ceil(totalApis / apisPerPage); i++) {
     pageNumbers.push(i);
   }
-
 
   const PageButton = (props) => {
     const activeStyle = {

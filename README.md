@@ -1,10 +1,11 @@
-# Public Api Site
+<center>
+
+<h1><b>Public Api Site</b></h1>
 
 The Unofficial site for [Public Apis Project](https://github.com/public-apis/public-apis/).
 
-## To DO
+Api Used : [Public Apis API](https://github.com/davemachado/public-api)
 
-[+] Search Func
+<img src="public/HomePage.png" alt="Home Page" width="90%"/>
 
-[+] Pagination Not fully Finished
-
+</center>
