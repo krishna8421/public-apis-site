@@ -23,7 +23,9 @@ function SearchBar({ AllApiData, searchData }) {
   };
 
   // Close button
-  const CloseBtnHandler = () => {};
+  const CloseBtnHandler = () => {
+    document.getElementById("input").value = "";
+  };
 
   function filterItems(apiArray, query) {
     return apiArray.filter(
@@ -60,7 +62,12 @@ function SearchBar({ AllApiData, searchData }) {
         <InputRightElement as="Button" onClick={CloseBtnHandler}>
           <RiCloseFill />
         </InputRightElement>
-        <Input _focus="" placeholder="Search APIs" onChange={handleChange} />
+        <Input
+          id="input"
+          _focus=""
+          placeholder="Search APIs"
+          onChange={handleChange}
+        />
       </InputGroup>
     </MotionBox>
   );
