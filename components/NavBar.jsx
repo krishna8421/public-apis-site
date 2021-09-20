@@ -49,11 +49,11 @@ export default function NavBar() {
                   <Icon as={RiLinkedinLine} />
                 </Button>
               </a>
-              <a href={twitterUrl}>
+              {/* <a href={twitterUrl}>
                 <Button variant="ghost">
                   <Icon as={FiTwitter} />
                 </Button>
-              </a>
+              </a> */}
               <Menu>
                 <MenuButton as={Button} variant="ghost">
                   <Icon as={FiGithub} />
@@ -62,21 +62,21 @@ export default function NavBar() {
                 <MenuList zIndex="popover">
                   <MenuItem>
                     <Icon as={DiGithubBadge} />
-                    &nbsp;&nbsp;&nbsp;{" "}
+                    &nbsp;&nbsp;&nbsp;
                     <Link href={publicApisRepo}>
                       <a>Public APIs Project</a>
                     </Link>
                   </MenuItem>
                   <MenuItem>
                     <Icon as={DiGithubBadge} />
-                    &nbsp;&nbsp;&nbsp;{" "}
+                    &nbsp;&nbsp;&nbsp;
                     <Link href={publicApisSiteRepo}>
                       <a>Public APIs Site</a>
                     </Link>
                   </MenuItem>
                   <MenuItem>
                     <Icon as={DiGithubBadge} />
-                    &nbsp;&nbsp;&nbsp;{" "}
+                    &nbsp;&nbsp;&nbsp;
                     <Link href={publicApisApiRepo}>
                       <a>Public APIs API</a>
                     </Link>
