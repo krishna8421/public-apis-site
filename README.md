@@ -1,11 +1,15 @@
-<center>
+<div align="center">
+    <h1>Public APIs Site</h1>
+</div>
 
-<h1><b>Public Api Site</b></h1>
+<br />
 
-The Unofficial site for [Public Apis Project](https://github.com/public-apis/public-apis/).
+<div align="center">
+    <p>The Unofficial site for <a href="https://github.com/public-apis/public-apis/">Public APIs Project.</a></p>
+  <p>Api Used: <a href="https://github.com/davemachado/public-api">Public APIs Api</a></p>
+</div>
 
-Api Used : [Public Apis API](https://github.com/davemachado/public-api)
-
+<div align="center">
 <img src="public/HomePage.png" alt="Home Page" width="90%"/>
+</div>
 
-</center>
