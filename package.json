@@ -1,7 +1,8 @@
 {
   "name": "public-apis-site",
-  "version": "0.1.0",
+  "version": "2.0",
   "private": true,
+  "author": "Krishna Kumar"
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +11,7 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.15",
-    "@chakra-ui/react": "^1.6.7",
+    "@chakra-ui/react": "^1.6.8",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "framer-motion": "^4",
@@ -24,3 +25,4 @@
     "eslint-config-next": "11.1.2"
   }
 }
+
