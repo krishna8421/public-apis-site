@@ -2,7 +2,7 @@
   "name": "public-apis-site",
   "version": "2.0",
   "private": true,
-  "author": "Krishna Kumar"
+  "author": "Krishna Kumar",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
