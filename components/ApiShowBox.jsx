@@ -12,42 +12,53 @@ function ApiShowBox(props) {
       overflow="hidden"
       bgColor="gray.900"
     >
-      <Flex mt={5} align="center" h="23rem" w="18rem" direction="column">
-        <Flex mb={2} w='95%' align="center" justify="center">
+      <Flex align="center" h="23rem" w="18rem" direction="column">
+
+        {/* API Name */}
+        <Flex w='95%' align="center" justify="center">
           <a href={props.Link}>
-            <Text fontSize="2xl">{props.API}</Text>
+            <Text my={3} fontSize={(props.API).length> 20?'1rem':'1.5rem'} >{props.API}</Text>
           </a>
         </Flex>
+
+        {/* API Category */}
         <Badge mb={3} colorScheme="purple">
           {props.Category}
         </Badge>
-        <Flex w='95%' align="center" justify="center">
-        <Text fontSize="sm" mb={10}>
-          {props.Description}
-        </Text>
 
+        {/* API Description */}
+        <Flex w='95%'  justify="center"  h={72}>
+          <Text fontSize="sm" sx={{ overflowWrap: 'break-word' }} overflow='hidden'>
+            {props.Description}
+          </Text>
         </Flex>
+
+        {/* API Details */}
         <Box w="65%">
-          <Text fontSize="md">
-            Auth:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <Text fontSize="md" ml={2}>
+            Auth:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             {props.Auth===''?'No':props.Auth}
           </Text>
           <Divider mb={5} />
-          <Text fontSize="md">
+          <Text fontSize="md" ml={2}>
             HTTPS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             {props.HTTPS?'Yes':'No'}
           </Text>
           <Divider mb={5} />
-          <Text fontSize="md">
+          <Text fontSize="md" ml={2}>
             CORS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             {props.CORS==='yes'?'Yes':'No'}
           </Text>
           <Divider mb={5} />
         </Box>
+
+        {/* API Open Button */}
         <a href={props.Link}>
-          <Button mt={4} colorScheme="teal" variant="solid">
+          <Box h={55}>
+          <Button colorScheme="teal" variant="solid">
             Open
           </Button>
+          </Box>
         </a>
       </Flex>
     </Box>
