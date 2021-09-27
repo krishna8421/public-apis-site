@@ -16,9 +16,11 @@ function ApiShowBox(props) {
 
         {/* API Name */}
         <Flex w='95%' align="center" justify="center">
-          <a href={props.Link}>
-            <Text my={3} fontSize={(props.API).length> 20?'1rem':'1.5rem'} >{props.API}</Text>
-          </a>
+          <center>
+            <a href={props.Link}>
+              <Text my={3} fontSize={(props.API).length> 20?'1rem':'1.5rem'} >{props.API}</Text>
+            </a>
+          </center>
         </Flex>
 
         {/* API Category */}
@@ -28,9 +30,11 @@ function ApiShowBox(props) {
 
         {/* API Description */}
         <Flex w='95%'  justify="center"  h={72}>
-          <Text fontSize="sm" sx={{ overflowWrap: 'break-word' }} overflow='hidden'>
-            {props.Description}
-          </Text>
+          <center>
+            <Text fontSize="sm" sx={{ overflowWrap: 'break-word' }} overflow='hidden'>
+              {props.Description}
+            </Text>
+          </center>
         </Flex>
 
         {/* API Details */}
