@@ -25,7 +25,7 @@ export default function NavBar() {
     <Box mt={2}>
       <Box borderBottomWidth="3px" borderColor="purple.600">
         <Flex
-          justify={["center", "center", "space-between", "space-between"]}
+          justify="space-between"
           align="center"
           p="3"
         >
@@ -34,7 +34,7 @@ export default function NavBar() {
               <a>
                 <Img
                   ml={4}
-                  h="2rem"
+                  h={["1.2rem","1.5rem","2rem","2rem"]}
                   src="/PublicAPIs.png"
                   alt="Public Apis"
                   objectFit="cover"
@@ -42,8 +42,8 @@ export default function NavBar() {
               </a>
             </Link>
           </Box>
-          <Box display={["none", "none", "block", "block"]}>
-            <HStack spacing={4} mr={4}>
+          <Box display="block">
+            <HStack spacing={[0.5,2,4,4]} mr={[0,2,4,4]}>
               <a href={linkedinUrl}>
                 <Button variant="ghost">
                   <Icon as={RiLinkedinLine} />
