@@ -13,6 +13,7 @@ function MyApp({ Component, pageProps }) {
             name="description"
             content="Collection of publicly available APIs"
           />
+          <meta name="image" property="og:image" content="/favicon.ico"/>
           <link rel="icon" href="/favicon.ico" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
