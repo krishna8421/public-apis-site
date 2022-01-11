@@ -17,6 +17,9 @@
 ### TO-DO
  
 Convert to Typescript.
+
 Optimise the search.
+
 Use keyboard shortcut to focus on search bar.
+
 UI?
