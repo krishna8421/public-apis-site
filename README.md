@@ -13,3 +13,10 @@
 <img src="public/HomePage.png" alt="Home Page" width="90%"/>
 </div>
 
+
+### TO-DO
+ 
+Convert to Typescript.
+Optimise the search.
+Use keyboard shortcut to focus on search bar.
+UI?
