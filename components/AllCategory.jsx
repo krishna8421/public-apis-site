@@ -3,7 +3,7 @@ import CategoryBox from "./CategoryBox";
 function AllCategory({ categoryList }) {
   return (
     <>
-      {categoryList.map((category) => (
+      {categoryList.categories.map((category) => (
         <CategoryBox
           key={category}
           categoriesName={category}

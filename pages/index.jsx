@@ -7,6 +7,7 @@ import AllApisBtn from "../components/AllApisBtn";
 import { useState } from "react";
 import Footer from "../components/Footer";
 import ApiShowBox from "../components/ApiShowBox";
+import Notification from "../components/Notification";
 
 //Static fetch Category List every 24hr
 export async function getStaticProps() {
@@ -61,6 +62,7 @@ const Home = ({ AllApiData, categoryList }) => {
     <Flex justify="center" direction="column" minH="100vh">
       <Box w={["95%", "95%", "90%", "85%"]} m="auto" mt={0}>
         <NavBar />
+        <Notification />
         <Box mt={5} display="flex" justifyContent="center">
           <SearchBar AllApiData={AllApiData.entries} searchData={searchData} />
         </Box>
