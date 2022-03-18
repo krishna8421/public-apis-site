@@ -5,6 +5,12 @@
 <br />
 
 <div align="center">
+    <a href="https://github.com/public-apis/public-apis/issues/3104">⚠️Public APIs Situation [ READ THIS ISSUE PLEASE ]⚠️</a>
+</div>
+
+<br />
+
+<div align="center">
     <p>The Unofficial site for <a href="https://github.com/public-apis/public-apis/">Public APIs Project.</a></p>
   <p>Api Used: <a href="https://github.com/davemachado/public-api">Public APIs Api</a></p>
 </div>
